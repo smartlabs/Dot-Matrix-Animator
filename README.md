@@ -1,10 +1,15 @@
-Dot Matrix Animatior
+Dot Matrix Animator
 ====================
 
 This is a web application for simulating/creating dot matrix animation.  To use the this application, unzip the project onto your mac's Site directory.  Make sure php is turned on as the application relies on php code to convert graphics into svg format.  
 
-Files Description 
----------------------
+Additional Guides: 
+[Turning on mac web servicer](http://www.macinstruct.com/node/112)
+[Enable php and apache on mac](http://foundationphp.com/tutorials/php_leopard.php)
+
+
+File Description
+----------------
 
 * index.html - Main access page for the application.  Hold all html and markups. 
 * library/character_lib.txt - a sample character library.  Content can be imported into Character tab. 
@@ -26,7 +31,7 @@ Files Description
 Credits 
 -------
 
-This tool is made possible by these fellow open source projects: 
+This project is made possible with the following open source project: 
 
 * [jQuery](http://jquery.com/)
 * [jQuery UI](http://jqueryui.com/)
