@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Dot Matrix</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="bchao">
+	<link rel="stylesheet" type="text/css" href="styles/reset.css">
+	<link rel="stylesheet" type="text/css" href="styles/pixels.css" />	
+	<link rel="stylesheet" type="text/css" href="styles/smoothness/jquery-ui-1.8.12.custom.css" />		
+</head>
+<body>
+
+<!--- matrix configuration dialog -->	
+<div id="matrix-config" title="Matrix Settings">
+	<center>
+	<table>
+	<tr><td class="right-align">rows:</td><td><input type="text" name="rows" size=5 value=18></input></td></tr>
+	<tr><td class="right-align">cols:</td><td><input type="text" name="cols" size=5 value=120></input></td></tr>
+	<tr><td class="right-align">pixel dimension:</td><td><input type="text" name="height" size=5 value=6></input></td></tr>
+	<tr><td class="right-align">gap:</td><td><input type="text" name="gap" size=5 value=1></input></td></tr>	
+	<tr><td class="right-align">time(ms):</td><td><input type="text" name="time" size=5 value=250></input></td></tr>		
+	</table>
+	</center>		
+	<input type="checkbox" id="export-svg" value="arrows"> export svg when animating<br>	
+	<center><span>export prefix: </span><input type="text" name="prefix" size=5 value=""></input></center>	
+	<center><button id="automate-left-scroll">automate left scroll</button></center>
+</div>		
+
+<!--- matrix configuration -->	
+
+<div id="matrix">
+	<!--- matrix -->
+	<h1>Dot Matrix Animator</h1>
+	<div id="matrix-table" tabindex="1"></div>
+	<div id="matrix-controllers">
+		<!-- toggle/character, inptu field, and set button -->
+		<div id="input-content">
+			<select id="input-selection">
+			  <option value=1>pixel mode</option>
+			  <option value=2>text mode</option>
+			</select>	
+			<input id="character-input" disabled="disabled"></input>
+			<button id="paste-characters" disabled="disabled">set</button>	
+		</div>
+		<!--- matrix directional controls -->		
+		<div id="matrix-directional">
+			<table>
+			<tr><td colspan="3"><center><button id="shift-up">shift up</button></center></td></tr>
+			<tr><td><button id="shift-left">shift left</button></td><td><button id="save-frame">add to animation</button></td><td><button id="shift-right">shift right</button></td></tr>
+			<tr><td colspan="3"><center><button id="shift-down">shift down</button></center></td></tr>
+			</table>
+		</div>
+		<button id="clear-screen">clear matrix</button>
+	</div>
+	<div id="matrix-settings">
+		<button id="show-matrix-config">customize matrix</button>
+	</div>			
+</div>
+
+<!-- animation controls -->
+<div id="animation-tab-controls">
+	<center>	
+	<table>
+	<tr>
+		<td><button id="remove-frame">Remove</button></td>
+		<td><button id="duplicate-frame">Duplicate</button>
+	</tr>
+	<tr>
+		<td><button id="move-frame-up">Move Up</button></td>
+		<td><button id="move-frame-down">Move Down</button></td>
+	</td>
+	<tr>
+		<td colspan="2"><center><button id="animate-frames">Animate</button></center></td>
+	</tr>	
+	<tr>
+		<td><button id="import-animation-start">Import</button></td>
+		<td><button id="export-frames" >Export</button></td> 
+	</tr>
+	</table>
+	</center>
+</div>
+
+
+<!--- export animation window -->	
+<div id="export-animation-window" title="Export Animation">
+	<p>Copy and save the content into a file.</p>	
+	<textarea class="export_area" cols=50 rows=20></textarea>
+</div> 
+
+<!--- import animation window -->	
+<div id="import-animation-window" class="text_dialogs" title="Import Animation">
+	<textarea class="export_area" cols=50 rows=20></textarea>
+	<button id="import-frames">Import</button>
+</div>
+
+
+<!-- character controls -->
+<div id="character-tab-controls">
+	<center>		
+		<table>
+		<tr>
+			<td colspan="2"><center><button id="add-new-char">New</button></center></td>
+		</tr>				
+		<tr>
+			<td colspan="2"><center><button id="edit-char">Edit</button></center></td>
+		</tr>	
+		<tr>
+			<td colspan="2"><center><button id="remove-char">Remove</button></center></td>	
+		</tr>				
+		<tr>
+			<td><button id="import-charset">Import</button></td>		
+			<td><button id="export-charset">Export</button></td>
+		</tr>	
+		</table>
+	</center>
+</div>
+
+<!-- characters window -->
+<div id="character-editor" title="Character Editor">
+	<span><div id="character-controls">
+		
+			<center>
+				<table>
+					<tr><td class="right-align">rows:</td><td><input type="text" name="char_rows" size=3 value=18></input></td></tr>
+					<tr><td class="right-align">cols:</td><td><input type="text" name="char_cols" size=3 value=12></input></td></tr>
+					<tr><td class="right-align">character:</td><td><input type="text" name="char_map" size=3 value='a' maxlength=1></input></td></tr>		
+					<tr><td colspan='2'><center><button id="save-character">save</button></center></td></tr>
+					
+			</table>							
+			</center>
+		
+	</div></span>
+	<span><div id="character-matrix" tabindex="1"></div></span>	
+</div>
+
+
+
+<!--- export configuration -->	
+<div id="charset-export-window" title="Export Characters">
+	<p>Copy and save the content into a file.</p>
+	<textarea class="export_area" cols=50 rows=20></textarea>
+</div> 
+
+<!--- export configuration -->	
+<div id="charset-import-window" class="text_dialogs" title="Import Characters">
+	<textarea cols=50 rows=20></textarea>
+	<button class="export_area" id="import-characters-now">Import</button>
+</div>
+
+<!-- our tab -->
+<div id="tabs"> 	
+	<ul>
+		<li><a href="#animation-frames">Animation</a></li>
+		<li><a href="#character-set">Characters</a></li>		
+	</ul>	
+	<!--- frame container -->
+	<div id="animation-frames">
+		<ul id="animation-select-frames">
+		</ul>
+	</div>		
+	<!-- characters -->
+	<div id="character-set">
+		<ul id="character-set-columns">		
+		</ul>
+	</div>	
+	
+</div>
+<!-- end of tab -->
+
+<div id="filler">
+	
+</div>
+
+<!--- js -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script type="text/javascript" src="script/svg/jquery.svg.js"></script> 
+<script type="text/javascript" src="script/svg/jquery.svgdom.js"></script> 
+<script type="text/javascript" src="script/ui/jquery-ui-1.8.12.custom.min.js"></script> 
+<script type="text/javascript" src="script/json/json2.js"></script> 
+<script type="text/javascript" src="script/bit-array.js"></script>
+<script type="text/javascript" src="script/grid-data.js"></script>
+<script type="text/javascript" src="script/obj_helper.js"></script>
+<script type="text/javascript" src="script/svg_helper.js"></script>
+<script type="text/javascript" src="script/matrix_edit.js"></script>
+<script type="text/javascript" src="script/char_edit.js"></script>
+<script type="text/javascript" src="script/pixels.js"></script>
+</script>
+</body>
+</html>
+

@@ -1,0 +1,209 @@
+/* ---- general text, size ---- */ 
+body {
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size:0.7em;
+}
+
+/*---- tabs are off a bit -----*/ 
+#tabs { 
+	margin:10px; 
+	z-index:1;
+	width:350px;
+}
+
+/*----selectable frames on the side, for animation sequence ----*/ 
+#animation-select-frames { 
+	margin: 0; 
+	padding: 0; 
+}
+
+/* this is a filler object under the tabs, allows us to scroll beyond the height of the tab 
+   so we can see all the frames without having the animatino/character controls blocking it */ 
+#filler {
+	width:345px;
+	height:130px;
+	margin:10px;
+}
+
+/* each frame is a li */ 
+#animation-select-frames li { margin: 5px 0 5px 0; }
+/* not sure why bottom has a padding already */
+#animation-select-frames li.selected { background: rgba(126,199,255,0.5); }
+#animation-select-frames li.animating { background: rgba(126,199,255,0.5); }
+
+/* animation frame controls */ 
+#animation-tab-controls {    
+	position:fixed;
+	width:345px;
+	height:130px;
+	border:1px solid rgba(0,0,0,0.3);
+	margin: 10px;
+	left:5px;
+	bottom:0px;
+	z-index:2; /* above #tabs */  
+	border-radius: 4px; 
+	background-color: rgba(255,255,255,0.85); /* show just a little bit of transparency */
+}
+
+#animation-tab-controls table {
+	margin:5px;
+}
+
+#animation-tab-controls button {
+	width:110px;
+	margin:5px;
+}
+
+.export_area {
+	margin:5px;
+}
+
+/*** for character tab ***/ 
+#character-tab-controls {    
+	position:fixed;
+	width:345px;
+	height:130px;
+	border:1px solid rgba(0,0,0,0.3);
+	margin: 10px;
+	left:5px;
+	bottom:0px;
+	z-index:2; /* above #tabs */  
+	border-radius: 4px; 
+	background-color: rgba(255,255,255,0.80); /* show just a little bit of transparency */	
+}
+
+#character-tab-controls table {
+	margin:5px;
+}
+
+#character-tab-controls button {
+	width:110px;
+	margin:5px;
+}
+
+/* ---- this is where matrix configuration and dot-matrix actually lives ---- */
+#matrix {
+	position:    fixed;
+	left:        390px;     
+}
+
+#matrix h1 {
+	font-size: 3em;
+	color: rgba(0,0,0,0.75);
+}
+
+/*---- the acutal dot matrix ------ */ 
+#matrix-table {	margin:30px 5px 10px 5px; outline: 0;}
+
+#matrix #save-frame, #matrix h2 { margin:5px;}
+
+#matrix-directional button { margin: 3px;}
+
+/*---- matrix config dialog box -----*/ 
+#matrix-config ul {  list-style-type: none; }
+#matrix-config input { text-align: right; }
+/* give this a bit more margin */ 
+#matrix-config table { margin:10px 0 10px; }
+#matrix-config button {margin:10px 0 10px;}
+#matrix-config  > input {margin:5px 0 5px;}
+
+/* general highlighing of each pixel */ 
+rect.selected { fill: rgba(255,0,0,0.5); } 
+
+/* ---- animation frames, fixed to upper left ---- */ 
+
+#animation-frames {
+	width:30%;
+	height:100%;
+	margin: 5px;
+}
+
+/* more specific properties */ 
+.right-align {
+	text-align:right;
+}
+
+div.text_dialogs button { margin:5px; }
+
+/* character set stuff */ 
+
+#character-matrix {
+	position:absolute;
+	margin: 5px;
+	left:130px;
+	outline: 0;
+}
+#character-editor {
+	position:relative;
+
+}
+
+#character-controls {
+ 	position:absolute;
+	margin: 8px;
+}
+
+#character-controls td {
+	margin: 5px;
+}
+
+button#clear-screen {
+	margin-top:10px;
+	margin-left:5px;
+
+}
+
+#character-controls button {
+	margin: 10px;
+}
+
+#character-set li.character {
+	margin: 10px;
+}
+
+#character-set li.selected { background: rgba(126,199,255,0.5); }
+
+/* multiple columns for character set */ 
+ul#character-set-columns li {
+	text-align: left;
+  	float: left;
+  	list-style: none;
+  	height: 30px;
+  	width: 50px;
+}
+
+.character {
+	position: relative;
+	display: inline;
+	border:1px solid rgba(0,0,0,0.3);
+	vertical-align:text-top;
+}
+
+#input-selection {
+	display:inline;
+}
+
+#input-content input {
+	margin: 0 5px 0 5px;
+}
+
+#matrix-directional {
+	margin: 10px 0px 0px 100px;
+	display:block;
+}
+
+#matrix-settings {
+	display:inline;
+	margin:10px; 
+	float:right;
+}
+
+#matrix-controllers {	
+	diplay:inline;
+	float:left;
+	border:1px solid rgba(0,0,0,0.3);
+	margin: 10px;
+	padding: 20px;
+	width: 315px;	
+	border-radius: 4px;
+}
