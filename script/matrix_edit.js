@@ -155,6 +155,12 @@ var matrix_edit = function () {
 
 			// we are done, no more set time out 
 			animation_timeout = null 
+			
+			// if we exporte svg, we want to send this to a zip now 
+			if ( export_svg ) {
+				zip_svg_and_download(); 
+			}
+			
 		}
 	};
 	
@@ -196,6 +202,8 @@ var matrix_edit = function () {
 		var prefix =  $export_prefix.val();
 		if ( prefix ) {
 			export_data += "&prefix=" + prefix; 
+		} else {
+			export_data += "&prefix=export"			
 		}
 
 		// now write this 
@@ -206,6 +214,28 @@ var matrix_edit = function () {
 	         success: function(msg){ }
 	    });
 	};
+	
+	// zip all the svg content and download it 
+	var zip_svg_and_download = function () {
+		
+		// give it the normal name 
+		var export_data = "prefix=export";
+				
+		// see if we need to set the prefix 
+		var prefix = $export_prefix.val();
+		if ( prefix ) {
+			export_data = "prefix=" + prefix; 
+		} 
+		
+		// now write this 
+		$.ajax({
+	         type: "POST",
+	         url: "zip_files.php",    
+	         data: export_data,
+	         success: function(msg){ }
+	    });
+		
+	}
 	
 	var scroll_to_left = function ( value_of_input, current_col, current_row ) {
 

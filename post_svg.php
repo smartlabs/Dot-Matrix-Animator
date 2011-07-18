@@ -2,15 +2,9 @@
 
 	 // create the prefix 
 	 $prefix = $_POST['prefix'];
-	
-	 // if not found, use time stamp 
-	 $file_prefix = time(); 
-	 if ( isset($prefix) ) {
-		$file_prefix = $prefix; 	
-	 } 
 
 	 // form the filename 
-     $File = $file_prefix.'_frame_'.$_POST['index'].'.svg';	
+     $File = $prefix.'_frame_'.$_POST['index'].'.svg';	
      $Handle = fopen($File, 'w');
 
 	 // get the data 
