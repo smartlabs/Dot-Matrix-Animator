@@ -1,12 +1,15 @@
 Dot Matrix Animator
 ====================
 
-This is a web application for simulating/creating dot matrix animation.  To use the this application, unzip the project onto your mac's Site directory.  Make sure php is turned on as the application relies on php code to convert graphics into svg format.  
+This is a web application for simulating/creating dot matrix animation.  To use the this application:
 
-Additional Guides: 
-* [Turning on mac web servicer](http://www.macinstruct.com/node/112)
-* [Enable php and apache on mac](http://foundationphp.com/tutorials/php_leopard.php)
+1. [Download](https://github.com/smartlabs/Dot-Matrix-Animator/archives/master) the project from Github. 
+2. Unzip the project onto your user's Site directory.  
+3. Make sure you have mac web server turned on.  Check this [guide](http://www.macinstruct.com/node/112). 
+4. Make sure php is turned on as the application relies on php to convert graphics into svg.  Check this [guide](http://foundationphp.com/tutorials/php_leopard.php).
+5. If you intend to export your animation to svg's,  you need to make sure the privileges of your site folder is set to 'Read & Write' for everyone. Do this either by following this [guide](http://docs.info.apple.com/article.html?path=Mac/10.4/en/mh669.html) or use terminal and chmod. 
 
+Enjoy!! 
 
 File Description
 ----------------
