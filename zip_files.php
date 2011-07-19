@@ -1,7 +1,8 @@
 <?php 
 
 	// sleep for a bit to wait for files to finish writing 
-	sleep(1);
+	// not the best way but will work for now
+	sleep(3);
 
 	// create the file name 	
 	$prefix = $_POST['prefix'];
@@ -26,11 +27,6 @@
 		unlink($file);	
 	}
 		
-	// download the content 
-	header('Content-type: application/zip');
-	header('Content-disposition: filename="' . $zipfilename . '"');
-	header("Content-length: " . filesize($zipfilename));
-	readfile($zipfilename);
-	exit();
+	// optional echo if you want download the file 
 	
 ?>
