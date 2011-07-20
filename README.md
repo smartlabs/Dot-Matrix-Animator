@@ -15,7 +15,7 @@ Online Demo
 This application is online at [http://www.dotmatrixanimator.com/](http://www.dotmatrixanimator.com/)
 
 * [Sample animation](https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_animation.txt)
-* [sample characters]([https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_character.txt)
+* [Sample characters](https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_character.txt)
 
 Enjoy!! 
 
