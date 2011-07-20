@@ -88,7 +88,7 @@ $('#character-matrix rect').live('click',function() {
 }); 
 
 /////// automate left scrolling //// 
-$('#automate-left-scroll').bind('click',matrix_edit.automate_left_scroll);
+$('#left-fill').bind('click',matrix_edit.automate_left_scroll);
 
 // select which input mode we are in 
 // set character or toggle 
@@ -102,11 +102,13 @@ $('#input-selection').bind('change',function() {
 			matrix_edit.remove_char_start(); 		
 		    $('#character-input').attr('disabled','disabled');
 		    $('#paste-characters').attr('disabled','disabled');		
+		    $('#left-fill').attr('disabled','disabled');				
 			break;
 				
 		case "2": 
 	    	$('#character-input').removeAttr('disabled');
 	    	$('#paste-characters').removeAttr('disabled');
+	    	$('#left-fill').removeAttr('disabled');	
 			break;		
 	}
 }); 

@@ -26,7 +26,6 @@
 	</center>		
 	<input type="checkbox" id="export-svg" value="arrows"> export svg when animating<br>	
 	<center><span>export prefix: </span><input type="text" name="prefix" size=5 value=""></input></center>	
-	<center><button id="automate-left-scroll">automate left scroll</button></center>
 </div>		
 
 <!--- matrix configuration -->	
@@ -36,14 +35,15 @@
 	<h1>Dot Matrix Animator</h1>
 	<div id="matrix-table" tabindex="1"></div>
 	<div id="matrix-controllers">
-		<!-- toggle/character, inptu field, and set button -->
+		<!-- toggle/character, input field, and set button -->
 		<div id="input-content">
 			<select id="input-selection">
 			  <option value=1>pixel mode</option>
 			  <option value=2>text mode</option>
 			</select>	
 			<input id="character-input" disabled="disabled"></input>
-			<button id="paste-characters" disabled="disabled">set</button>	
+			<button id="paste-characters" disabled="disabled">set</button>				
+			<button id="left-fill" disabled="disabled">autofill left scroll</button>			
 		</div>
 		<!--- matrix directional controls -->		
 		<div id="matrix-directional">

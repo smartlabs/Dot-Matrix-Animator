@@ -237,44 +237,84 @@ var matrix_edit = function () {
 		
 	}
 	
-	var scroll_to_left = function ( value_of_input, current_col, current_row ) {
+	// used for creating closure function, for set time out 
+	var create_left_scroll_closure = function (i,c,r) {
+	    return function() { fill_left_scroll(i,c,r) };
+	};
+	
+	var fill_left_scroll = function ( value_of_input, current_col, current_row ) {
 
-			var temp_col = current_col; 
+		var rows = parseInt($rows_input.val()); 
+		var cols = parseInt($cols_input.val()); 
+		var h = parseFloat($height_input.val()); 
+		var g = parseFloat($gap_input.val()); 
+		
+		// create our grid data 
+		var temp_table_data = new GridData(rows,cols);
 
-			for ( var ii = 0; ii < value_of_input.length; ii++ ) {
+		var temp_col = current_col; 
+		
+		// flag if we wrote anything at all 
+		var write_something = false; 
 
-				// dont need to do this anymore once we reach over 
-				if ( temp_col > matrix_edit.matrix_table_data.cols ) break; 
+		// go through each character to see if we need to fill them 
+		for ( var ii = 0; ii < value_of_input.length; ii++ ) {
 
-				var current_char = value_of_input[ii];			
-				var character_data = char_edit.character_dictionary[current_char]; 
+			// dont need to do this anymore once we reach over to border of the display 
+			if ( temp_col > matrix_edit.matrix_table_data.cols ) break; 
 
-				// dont bother with this one 
-				// but we need to increment the temp col 
-				if ( ( temp_col + character_data.cols ) < 0 ) {
-					temp_col += character_data.cols; 
-					continue; 
-				}
+			// get the current character 
+			var current_char = value_of_input[ii];			
+			var character_data = char_edit.character_dictionary[current_char]; 
 
-				if ( character_data != null ) {
-
-					// copy the data 
-					matrix_edit.matrix_table_data.copyData(current_row,temp_col,character_data); 			
-
-					// prepare for next character 
-					temp_col = temp_col + character_data.cols; 
-				}
+			// dont bother with this one since it is off the display border
+			// but we need to increment the temp col 
+			if ( ( temp_col + character_data.cols ) < 0 ) {
+				temp_col += character_data.cols; 
+				continue; 
 			}
+			
+			// we have something to copy 
+			if ( character_data != null ) {
 
-			if ( export_svg ) write_matrix_to_svg();
+				// copy the data with correct offset 
+				temp_table_data.copyData(current_row,temp_col,character_data); 			
 
-			svg_helper.generate_svg_with_data($matrix_table,matrix_edit.matrix_table_data,parseFloat($height_input.val()),parseFloat($gap_input.val()));
-
-			// start next animation 
-			animation_timeout = setTimeout(function(){
-				scroll_to_left(value_of_input,current_col-1,current_row); 
-			},animation_time)
+				// prepare for next character, this is where we start next 
+				temp_col = temp_col + character_data.cols; 
+				
+				// flag that we wrote something 
+				wrote_something = true; 
+			}
 		}
+
+		var $new_frame = create_frame_view_from_data(temp_table_data);
+
+		// add in the sort frame 
+		$animation_frames.append($new_frame);
+		
+	};
+	
+	// returns the total column a string will take 
+	var length_of_string = function ( string ) {
+		
+		var total = 0; 
+		
+		for ( var ii = 0; ii < string.length; ii++ ) {
+			
+			// get the current character 
+			var current_char = string[ii];			
+			var character_data = char_edit.character_dictionary[current_char]
+			 
+			if ( character_data != null ) total += character_data.cols; 
+			
+		}
+		
+		return total; 
+		
+	};
+	
+
 	
 
 	///// PUBLIC /////////////
@@ -541,37 +581,43 @@ var matrix_edit = function () {
 
 		},
 		
+		
+		// automatically turn on left scroll 
 		automate_left_scroll : function () {
 
-			// if we are animation already, turn it off 
-			if ( animation_timeout ) {
-				clearTimeout(animation_timeout); 
-				animation_timeout = null; 
-				return 
-			}
-
-			svg_index = 0; 	
-			export_svg =  $('#export-svg').is(':checked');
-
+			// check that we actually have something to write 
 			if ( $char_start_pixel == null ) return; 
-
-			animation_time =  parseInt($time_input.val()); 
 
 			// get the rows and index of this thing if it is selected 
 			if ( $char_start_pixel.length == 1 ) {
 
-				is_scrolling = true; 
-
 				var value_of_input = $('#character-input').val();
+				// where did we press 
 				var index = $char_start_pixel.parent().children('rect').index($char_start_pixel); 	
+				// get the row of the character 
 				var row = Math.floor(index / matrix_edit.matrix_table_data.cols); 
+				
+				// get the starting col of the string
 				var col = index - ( matrix_edit.matrix_table_data.cols * row );
+				
+				// get how long the text is 
+				var total_length = length_of_string(value_of_input);
 
-				animation_timeout = setTimeout(function(){
-					scroll_to_left(value_of_input,col,row);			
-				},animation_time)
+				// create closure functions 
+				var funcs = []; 
+				for ( var ii = 0; ii < ( total_length + col); ii++ ) {				
+					funcs[ii] = create_left_scroll_closure(value_of_input,col-ii,row)
+				}
+
+				// now run the functions 
+				for ( var ii = 0; ii < ( total_length + col); ii++ ) {									
+					setTimeout(funcs[ii],ii*100)					
+				}				
+
+				// finally toggle the animation button 
+				setTimeout(toggle_animation_button_status,ii*100); 
 			}
-
+			
 		},
 	
 	};
