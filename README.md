@@ -12,8 +12,8 @@ This is a web application for simulating/creating dot matrix animation.  To use 
 This application is online at (http://www.dotmatrixanimator.com/)[http://www.dotmatrixanimator.com/]
 
 Other resources: 
-(Sample animation)[https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_animation.txt]
-(sample characters)[https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_character.txt]
+* [Sample animation](https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_animation.txt)
+* [sample characters([https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_character.txt)
 
 Enjoy!! 
 
