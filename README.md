@@ -9,11 +9,13 @@ This is a web application for simulating/creating dot matrix animation.  To use 
 4. Make sure php is turned on as the application relies on php to convert graphics into svg.  Check this [guide](http://foundationphp.com/tutorials/php_leopard.php).
 5. If you intend to export your animation to svg's,  you need to make sure the privileges of your site folder is set to 'Read & Write' for everyone. Do this either by following this [guide](http://docs.info.apple.com/article.html?path=Mac/10.4/en/mh669.html) or use terminal and chmod. 
 
+Online Demo 
+-----------
+
 This application is online at [http://www.dotmatrixanimator.com/](http://www.dotmatrixanimator.com/)
 
-Other resources: 
 * [Sample animation](https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_animation.txt)
-* [sample characters([https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_character.txt)
+* [sample characters]([https://raw.github.com/smartlabs/Dot-Matrix-Animator/master/sample/sample_character.txt)
 
 Enjoy!! 
 
