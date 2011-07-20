@@ -27,6 +27,8 @@
 		unlink($file);	
 	}
 		
-	// optional echo if you want download the file 
+	// optional echo if you want download the file via browser 
+	// turn on the success portion of the ajax call if you want this 
+	// echo "my_web_address".$zipfilename
 	
 ?>

@@ -232,7 +232,11 @@ var matrix_edit = function () {
 	         type: "POST",
 	         url: "zip_files.php",    
 	         data: export_data,
-	         success: function(msg){ }
+	         success: function(resp){
+	         	// optional for forcing download when zip is done 
+	         	// uncomment the echo portion of zip_files.php if you want this on
+	         	// window.location.href = resp; 
+	         }
 	    });
 		
 	}
