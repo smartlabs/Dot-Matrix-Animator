@@ -19,6 +19,16 @@ This application is online at [http://www.dotmatrixanimator.com/](http://www.dot
 
 Enjoy!! 
 
+Quick Starter 
+-------------
+
+* Press mouse to toggle a pixel on and off 
+* Hold Shift and Mouse Over to turn on pixels continuously 
+* Hold Ctrl and Mouse Over to turn off pixels continuously 
+* Press + button to add a frame to animation sequence
+* Press Animate button to animate frames 
+* To export animation, go to settings and turn on "export svg when animating".  A zip file will be downloaded after svg's are generated. 
+
 File Description
 ----------------
 
